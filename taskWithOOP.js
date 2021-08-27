@@ -95,10 +95,10 @@ function clickBackDrop () {
 function pressArrowRight () {
     if (event.key !== 'ArrowRight') {return;}
     // console.log(imagesArr);
-    for (let i; i < imagesArr.length; i += 1) {
-        // console.log(imagesArr[i]);
-        if (newGallery.imageInModal.src == imagesArr[i - 1].original) {
-            newGallery.imageInModal.src = imagesArr[i].original;
+    for (let i = 0; i < imagesArr.length; i += 1) {
+        console.log(imagesArr[i].original);
+        if (newGallery.imageInModal.src == imagesArr[i].original) {
+            newGallery.imageInModal.src = imagesArr[i + 1].original;
             break;
         }
         
@@ -107,7 +107,15 @@ function pressArrowRight () {
 }
 function pressArrowleft () {
     if (event.key !== 'ArrowLeft') {return;}
+    for (let i = 0; i < imagesArr.length; i += 1) {
+        console.log(imagesArr[i].original);
+        if (newGallery.imageInModal.src == imagesArr[i].original) {
+            newGallery.imageInModal.src = imagesArr[i - 1].original;
+            break;
+        }
+        
+    }
 }
-
+//у функций преключения стрелками ошибка когда доходит до первой или последней, пока не разобрался как пофиксить
 newGallery.render(imagesArr);
 newGallery.gallery.addEventListener('click', openModal);
