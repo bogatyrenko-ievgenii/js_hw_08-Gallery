@@ -57,6 +57,7 @@ const openModal = (event) => {
     if (event.target.nodeName !== 'IMG') {
         return;
     }
+
     newGallery.modal.classList.add('is-open');
     newGallery.imageInModal.setAttribute('src', event.target.dataset.source);
     newGallery.modal.addEventListener('click', clickBtn);
@@ -64,56 +65,60 @@ const openModal = (event) => {
     window.addEventListener('keydown', pressEsc);
     window.addEventListener('keydown', pressArrowRight);
     window.addEventListener('keydown', pressArrowleft);
-    // window.addEventListener('mouseover', (event) => {
-    //     console.log(event.target.nodeName);
-    // });
+
 };
 
-function closeModal (action, toDoFunction) {
+function closeModal(action, toDoFunction) {
     newGallery.modal.classList.remove('is-open');
     newGallery.imageInModal.setAttribute('src', '');
     window.removeEventListener(action, toDoFunction);
 }
 
-function clickBtn () {
-    if (event.target.nodeName !== 'BUTTON') {return;}
+function clickBtn() {
+    if (event.target.nodeName !== 'BUTTON') {
+        return;
+    }
     closeModal('click', clickBtn);
 }
 
-function pressEsc () {
-    if (event.key !== 'Escape') {return;}
+function pressEsc() {
+    if (event.key !== 'Escape') {
+        return;
+    }
     closeModal('keydown', pressEsc);
 }
 
-function clickBackDrop () {
-    if (event.target.nodeName !== 'DIV') {return;}
+function clickBackDrop() {
+    if (event.target.nodeName !== 'DIV') {
+        return;
+    }
     closeModal('click', clickBackDrop);
 }
 
-function pressArrowRight () {
-    if (event.key !== 'ArrowRight') {return;}
+function pressArrowRight() {
+    if (event.key !== 'ArrowRight') {
+        return;
+    }
     // console.log(imagesArr);
     for (let i = 0; i < imagesArr.length; i += 1) {
-        // console.log(imagesArr[i].original);
-        if (newGallery.imageInModal.src == imagesArr[i].original) {
+        if (newGallery.imageInModal.src === imagesArr[i].original) {
             newGallery.imageInModal.src = imagesArr[i + 1].original;
             break;
         }
-        
-    }
-    
-}
-function pressArrowleft () {
-    if (event.key !== 'ArrowLeft') {return;}
-    for (let i = 0; i < imagesArr.length; i += 1) {
-        // console.log(imagesArr[i].original);
-        if (newGallery.imageInModal.src == imagesArr[i].original) {
-            newGallery.imageInModal.src = imagesArr[i - 1].original;
-            break;
-        }
-        
     }
 }
 
-newGallery.render(imagesArr);
-newGallery.gallery.addEventListener('click', openModal);
+function pressArrowleft() {
+    if (event.key !== 'ArrowLeft') {
+        return;
+    }
+    
+    for (let i = imagesArr.length - 1; i >= 0; i -= 1) {
+        if (newGallery.imageInModal.src === imagesArr[i].original) {
+            newGallery.imageInModal.src = imagesArr[i - 1].original;
+            break;
+        }
+    }
+}
+    newGallery.render(imagesArr);
+    newGallery.gallery.addEventListener('click', openModal);
