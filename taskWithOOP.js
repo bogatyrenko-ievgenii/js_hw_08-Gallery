@@ -2,11 +2,10 @@ import imagesArr from "./gallery-items.js";
 
 
 class Gallery {
-    constructor(gallery, modal, imageInModal, overlay) {
+    constructor(gallery, modal, imageInModal) {
         this.gallery = gallery;
         this.modal = modal;
         this.imageInModal = imageInModal;
-        this.overlay = overlay;
 
     }
 
@@ -50,7 +49,6 @@ const newGallery = new Gallery(
     document.querySelector('.js-gallery'),
     document.querySelector('.js-lightbox'),
     document.querySelector('.lightbox__image'),
-    document.querySelector('.lightbox__oberlay'),
 );
 
 
@@ -61,9 +59,9 @@ const openModal = (event) => {
     }
     newGallery.modal.classList.add('is-open');
     newGallery.imageInModal.setAttribute('src', event.target.dataset.source);
-    window.addEventListener('click', clickBtn);
+    newGallery.modal.addEventListener('click', clickBtn);
+    newGallery.modal.addEventListener('click', clickBackDrop);
     window.addEventListener('keydown', pressEsc);
-    window.addEventListener('click', clickBackDrop);
     window.addEventListener('keydown', pressArrowRight);
     window.addEventListener('keydown', pressArrowleft);
     // window.addEventListener('mouseover', (event) => {
@@ -96,7 +94,7 @@ function pressArrowRight () {
     if (event.key !== 'ArrowRight') {return;}
     // console.log(imagesArr);
     for (let i = 0; i < imagesArr.length; i += 1) {
-        console.log(imagesArr[i].original);
+        // console.log(imagesArr[i].original);
         if (newGallery.imageInModal.src == imagesArr[i].original) {
             newGallery.imageInModal.src = imagesArr[i + 1].original;
             break;
@@ -108,7 +106,7 @@ function pressArrowRight () {
 function pressArrowleft () {
     if (event.key !== 'ArrowLeft') {return;}
     for (let i = 0; i < imagesArr.length; i += 1) {
-        console.log(imagesArr[i].original);
+        // console.log(imagesArr[i].original);
         if (newGallery.imageInModal.src == imagesArr[i].original) {
             newGallery.imageInModal.src = imagesArr[i - 1].original;
             break;
@@ -116,6 +114,6 @@ function pressArrowleft () {
         
     }
 }
-//у функций преключения стрелками ошибка когда доходит до первой или последней, пока не разобрался как пофиксить
+
 newGallery.render(imagesArr);
 newGallery.gallery.addEventListener('click', openModal);

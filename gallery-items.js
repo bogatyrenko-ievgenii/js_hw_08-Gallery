@@ -16,7 +16,7 @@ export default [
   {
     description: 'sunflower, vase, vintage',
     preview:
-      'https://cdn.pixabay.com/photo/2017/05/08/13/15/spring-bird-2295434_150.jpg',
+      'https://b.rgbimg.com/users/o/oe/oeildenuit/600/2dRR2nO.jpg',
     original:
     'https://i.pinimg.com/originals/4d/a1/4e/4da14e1a7e8935c098992022c02e7989.jpg'
   },
@@ -39,7 +39,7 @@ export default [
     preview:
       'https://cdn.pixabay.com/photo/2016/01/08/05/24/sunflower-1127174_150.jpg',
     original:
-    'https://i.pinimg.com/originals/4d/a1/4e/4da14e1a7e8935c098992022c02e7989.jpg'
+    'https://freesvg.org/img/ChristieLeungSunflowers.png'
   },
   {
     description: 'sunflower, yellow, flower',
