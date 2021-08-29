@@ -28,8 +28,8 @@ body {
 .gallery {
   display: grid;
   width: 1200px;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  grid-auto-rows: 240px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-auto-rows: 140px;
   grid-gap: 12px;
   padding: 0;
   list-style: none;
