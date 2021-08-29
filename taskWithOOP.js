@@ -59,6 +59,7 @@ const openModal = (event) => {
     }
 
     newGallery.modal.classList.add('is-open');
+    newGallery.imageInModal.style.width = '300px';
     newGallery.imageInModal.setAttribute('src', event.target.dataset.source);
     newGallery.modal.addEventListener('click', clickBtn);
     newGallery.modal.addEventListener('click', clickBackDrop);
