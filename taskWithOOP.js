@@ -70,34 +70,34 @@ const openModal = (event) => {
 
 };
 
-function closeModal(action, toDoFunction) {
+const closeModal = (action, toDoFunction) => {
     newGallery.modal.classList.remove('is-open');
     newGallery.imageInModal.setAttribute('src', '');
     window.removeEventListener(action, toDoFunction);
-}
+};
 
-function clickBtn() {
+const clickBtn = () => {
     if (event.target.nodeName !== 'BUTTON') {
         return;
     }
     closeModal('click', clickBtn);
-}
+};
 
-function pressEsc() {
+const pressEsc = () => {
     if (event.key !== 'Escape') {
         return;
     }
     closeModal('keydown', pressEsc);
-}
+};
 
-function clickBackDrop() {
+const clickBackDrop = () => {
     if (event.target.nodeName !== 'DIV') {
         return;
     }
     closeModal('click', clickBackDrop);
-}
+};
 
-function pressArrowRight() {
+const pressArrowRight = () => {
     if (event.key !== 'ArrowRight') {
         return;
     }
@@ -108,9 +108,9 @@ function pressArrowRight() {
             break;
         }
     }
-}
+};
 
-function pressArrowleft() {
+const pressArrowleft = () => {
     if (event.key !== 'ArrowLeft') {
         return;
     }
@@ -121,6 +121,6 @@ function pressArrowleft() {
             break;
         }
     }
-}
+};
     newGallery.render(imagesArr);
     newGallery.gallery.addEventListener('click', openModal);
